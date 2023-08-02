@@ -1,3 +1,4 @@
+
 import { HardhatUserConfig } from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox";
 // https://github.com/projectsophon/hardhat-circom
@@ -19,7 +20,7 @@ const config: HardhatUserConfig = {
        chainId: 43113,
        accounts: 
          // YOUR PRIVATE KEY HERE
-       ["6a4d93822fd4cb372860532274f169a4f10594eae5f3f55b4e4b66ee4deb9612"],},},
+       ["dc566e4f64ec7827e4d82f7790eb1f3963065aa90f4c23b9e2fa5cd9c956a234"],},},
   solidity: {
     compilers: [
       {
@@ -41,4 +42,5 @@ const config: HardhatUserConfig = {
 };
 
 export default config;
+
 
