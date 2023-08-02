@@ -1,48 +1,52 @@
-template Multiplier2 () {  
+template Multiplier2 () {
 
-   // Declaration of signals.  
-   signal input ina;  
-   signal input inb; 
+   // Declaration of signals.
+   signal input ina;
+   signal input inb;
    signal six;
-   signal siy; 
-   signal output ouq;  
+   signal siy;
+   signal output ouq;
 
-   component andG= AND();
-   component notG= NOT();
-   component orG= OR();
+   component nandG = NAND();
+   component norG = NOR();
+   component andG = AND();
 
-   andG.a <== ina;
-   andG.b <== inb;
-   six <== andG.out;
+   nandG.a := ina;
+   nandG.b := inb;
+   six := nandG.out;
 
-   notG.in <== inb;
-   siy <== notG.out;
+   norG.a := inb;
+   norG.b := inb;
+   siy := norG.out;
 
-   orG.a <==six;
-   orG.b <==siy;
-   ouq <== orG.out;
+   andG.a := six;
+   andG.b := siy;
+   ouq := andG.out;
 
 }
+
+template NAND() {
+    signal input a;
+    signal input b;
+    signal output out;
+
+    out := ~(a & b);
+}
+
+template NOR() {
+    signal input a;
+    signal input b;
+    signal output out;
+
+    out := ~(a | b);
+}
+
 template AND() {
     signal input a;
     signal input b;
     signal output out;
 
-    out <== a*b;
+    out := a & b;
 }
 
-template OR() {
-    signal input a;
-    signal input b;
-    signal output out;
-
-    out <== a + b - a*b;
-}
-
-template NOT() {
-    signal input in;
-    signal output out;
-
-    out <== 1 + in - 2*in;
-}
 component main = Multiplier2();
