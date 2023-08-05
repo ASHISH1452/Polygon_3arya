@@ -8,7 +8,7 @@ template Multiplier2 () {
    signal output ouq;
 
    component nandG = NAND();
-   component norG = NOR();
+   component notG = NOR();
    component andG = AND();
 
    nandG.a := ina;
@@ -33,7 +33,7 @@ template NAND() {
     out := ~(a & b);
 }
 
-template NOR() {
+template NOT() {
     signal input a;
     signal input b;
     signal output out;
